@@ -143,14 +143,14 @@ class Bomb:
         screen.blit(self.img, self.rct)
 
 class Score:
-    def __init__(self): # フォントの設定
+    def __init__(self):  # フォントの設定
         self.fonto = pg.font.SysFont("hgp創英角ﾎﾟｯﾌﾟ体", 30)# 文字色の設定（青）
-        self.color = (0, 0, 255) # スコアの初期値
-        self.score = 0 # 初期スコアの描画
+        self.color = (0, 0, 255)  # スコアの初期値
+        self.score = 0  # 初期スコアの描画
         self.img = self.fonto.render(f"Score: {self.score}", 0, self.color) # 描画位置の設定（画面左下）
         self.pos = (100, 550)  # 横：100, 縦：画面下部から50（仮に画面高さ600を想定）
 
-    def update(self, screen): # スコアを更新する文字列Surfaceを生成
+    def update(self, screen):  # スコアを更新する文字列Surfaceを生成
         self.img = self.fonto.render(f"Score: {self.score}", 0, self.color) # スクリーンに描画
         screen.blit(self.img, self.pos)
 
@@ -180,7 +180,7 @@ def main():
         if bomb is not None:
             for bomb in bombs:
                 if bird.rct.colliderect(bomb.rct):
-                    # ゲームオーバー時に，こうかとん画像を切り替え，1秒間表示させる
+                     # ゲームオーバー時に，こうかとん画像を切り替え，1秒間表示させる
                     bird.change_img(8, screen)
                     fonto = pg.font.Font(None, 80)
                     txt = fonto.render("Game Over", True, (255, 0, 0))
@@ -191,6 +191,7 @@ def main():
 
         if beam is not None:
             if beam.rct.colliderect(bomb.rct):  # ビームが爆弾を撃ち落としたら
+                score+=1
                 beam = None
                 bomb = None
                 bird.change_img(6, screen)
