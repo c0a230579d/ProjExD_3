@@ -150,7 +150,7 @@ class Score:
         self.img = self.fonto.render(f"Score: {self.score}", 0, self.color) # 描画位置の設定（画面左下）
         self.pos = (100, 550)  # 横：100, 縦：画面下部から50（仮に画面高さ600を想定）
 
-    def update(self, screen):  # スコアを更新する文字列Surfaceを生成
+    def update(self, screen):  # スコア更新の文字列Surface生成
         self.img = self.fonto.render(f"Score: {self.score}", 0, self.color) # スクリーンに描画
         screen.blit(self.img, self.pos)
 
